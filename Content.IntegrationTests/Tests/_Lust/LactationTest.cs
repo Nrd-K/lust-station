@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
+using Content.Client.Fluids;
 using Content.Server._Sunrise.ERP.Systems;
 using Content.Shared._Sunrise.ERP;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.FixedPoint;
+using Content.Shared.Humanoid;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
+using Robust.Shared.IoC;
+using Robust.Shared.Localization;
 using Robust.Shared.Utility;
 
 namespace Content.IntegrationTests.Tests._Lust;
@@ -18,7 +22,7 @@ public sealed class LactationTest
     private const string Prototypes = @"
 - type: entity
   id: FemaleDummy
-  parent: MobHumanDummy
+  parent: MobHuman
   components:
   - type: HumanoidAppearance
     sex: Female";
@@ -27,57 +31,93 @@ public sealed class LactationTest
     public async Task TestLactation()
     {
         await using var pair = await PoolManager.GetServerClient();
-        var server = pair.Server;
-
+        var (server, client) = (pair.Server, pair.Client);
         var map = await pair.CreateTestMap();
 
-        var protoManager = server.ResolveDependency<IPrototypeManager>();
         var entityManager = server.ResolveDependency<IEntityManager>();
 
         var interactionSystem = entityManager.System<InteractionSystem>();
+        var puddleSystem = entityManager.System<PuddleSystem>();
         var solutionContainerSystem = entityManager.System<SharedSolutionContainerSystem>();
 
-        var femaleUid = entityManager.SpawnEntity("FemaleDummy", new MapCoordinates(0, 0, map.MapId));
-        var maleUid = entityManager.SpawnEntity("MaleDummy", new MapCoordinates(0, 1, map.MapId));
+        EntityUid femaleUid = default!;
+        EntityUid maleUid = default!;
+
+        await server.WaitAssertion(
+            () => femaleUid = server.EntMan.Spawn("FemaleDummy", new MapCoordinates(0, 0, map.MapId)));
+        await server.WaitAssertion(
+            () => maleUid = server.EntMan.Spawn("MobHuman", new MapCoordinates(0, 1, map.MapId)));
+
+        Console.WriteLine($"femaleUid: {femaleUid}");
+        Console.WriteLine($"maleUid: {maleUid}");
+
+        await pair.RunTicksSync(5);
 
         var maleSolutionComponent = entityManager.GetComponent<SolutionContainerManagerComponent>(maleUid);
         var femaleSolutionComponent = entityManager.GetComponent<SolutionContainerManagerComponent>(femaleUid);
 
-        interactionSystem.ProcessInteraction(entityManager.GetNetEntity(maleUid),
-            entityManager.GetNetEntity(femaleUid),
-            new InteractionPrototype()
-            {
-                AmountLactate = 5,
-                Category = "грудь",
-                Coefficient = 0.2f,
-                Emotes = new HashSet<string>(),
-                Erp = true,
-                Icon = new SpriteSpecifier.Texture(new ResPath("_Sunrise/Interface/ERP/boobs_suck.png")),
-                InhandObject = new HashSet<string>(),
-                LactationSolution = null,
-                LactationStimulationFlag = true,
-                LovePercentTarget = 5,
-                LovePercentUser = 0,
-                Name = "test1",
-                UseSelf = false,
-            });
-        // Первый тест. Мужик высасывает из женщины.
-        {
-            if (!solutionContainerSystem.TryGetSolution((maleUid, maleSolutionComponent),
-                    "chemicals",
-                    out var maleSolutionEntity,
-                    out var maleSolution) ||
-                !solutionContainerSystem.TryGetSolution((femaleUid, femaleSolutionComponent),
-                    "bloodstream",
-                    out var femaleSolutionEntity,
-                    out var femaleSolution))
-            {
-                return;
-            }
+        var milkQuantity = FixedPoint2.New(5);
+        var modifier = 0.2f;
 
-            Assert.That(maleSolution[new ReagentId("Milk", null)] == new ReagentQuantity("Milk", 5),
-                "Нет молока в мужике");
-            // Assert.That(femaleSolution[new ReagentId("blood", null)]);
+        Assert.That(solutionContainerSystem.TryGetSolution(maleUid, "chemicals", out var maleSolutionEntity, out var maleSolution));
+        Assert.That(solutionContainerSystem.TryGetSolution(femaleUid, "bloodstream", out var femaleSolutionEntity, out var femaleSolution));
+
+        // puddleSystem.TrySplashSpillAt()
+
+        // Первый тест. С соседом
+        {
+            var preBlood = femaleSolution.GetTotalPrototypeQuantity("Blood");
+
+            interactionSystem.ProcessInteraction(entityManager.GetNetEntity(maleUid),
+                entityManager.GetNetEntity(femaleUid),
+                new InteractionPrototype()
+                {
+                    AmountLactate = milkQuantity,
+                    Category = "грудь",
+                    Coefficient = modifier,
+                    Emotes = new HashSet<string>(),
+                    Erp = true,
+                    Icon = new SpriteSpecifier.Texture(new ResPath("_Sunrise/Interface/ERP/boobs_suck.png")),
+                    InhandObject = new HashSet<string>(),
+                    LactationSolution = null,
+                    LactationStimulationFlag = true,
+                    LovePercentTarget = 5,
+                    LovePercentUser = 0,
+                    Name = "test1",
+                    UseSelf = false,
+                    TargetSex = Sex.Female,
+                    UserSex = Sex.Male,
+                });
+            await pair.RunTicksSync(5);
+
+            var milk = maleSolution.GetTotalPrototypeQuantity("Milk");
+            var postBlood = femaleSolution.GetTotalPrototypeQuantity("Blood");
+
+            Assert.That(milk, Is.EqualTo(milkQuantity));
+            Assert.That(preBlood - postBlood == milkQuantity * modifier);
         }
+
+        // Второй тест. Без соседа
+        {
+            var preBlood = femaleSolution.GetTotalPrototypeQuantity("Blood");
+
+            interactionSystem.ProcessInteraction(entityManager.GetNetEntity(femaleUid),
+                entityManager.GetNetEntity(femaleUid),
+                new InteractionPrototype()
+                {
+                    AmountLactate = milkQuantity,
+                    Category = "грудь",
+                    UseSelf = true,
+                    Name = "test2",
+                    LactationStimulationFlag = true,
+                    LactationSolution = null,
+
+                });
+            await pair.RunTicksSync(5);
+            var postBlood = femaleSolution.GetTotalPrototypeQuantity("Blood");
+            Assert.That(preBlood - postBlood == milkQuantity * modifier);
+        }
+
+        await pair.CleanReturnAsync();
     }
 }
