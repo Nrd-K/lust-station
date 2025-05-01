@@ -1,0 +1,22 @@
+- type: latheRecipePack
+  id: UniformStaticSunrise
+  recipes:
+  - ClothingUniformJumpsuitAdjutant
+  - ClothingUniformJumpskirtAdjutant
+  - ClothingHeadHatCapAdjutant
+  - ClothingHeadHatBeretAdjutant
+  - ClothingHeadHatGarrisonCapAdjutant
+  - ClothingOuterCoatAdjutant
+  - ClothingNeckScarfStripedCyan
+  - ClothingNeckScarfStripedYellow
+  - ClothingHeadHatBeretParamedic
+  - ClothingHeadHatBeretChemistry
+  - ClothingHeadHatBeretPatologoanatom
+  - ClothingHeadHatBeretAtmos
+  - ClothingNeckScarfHos
+  - ClothingNeckScarfCap
+  - ClothingNeckScarfHOP
+  - ClothingNeckScarfQm
+  - ClothingNeckScarfCmo
+  - ClothingNeckScarfCe
+  - ClothingNeckScarfRD

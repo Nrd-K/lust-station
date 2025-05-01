@@ -48,7 +48,8 @@ public sealed partial class AreaReactionEffect : EntityEffect
 
     protected override string ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
             => Loc.GetString("reagent-effect-guidebook-area-reaction",
-                    ("duration", _duration)
+                ("chance", Probability),
+                ("duration", _duration)
                 );
 
     public override LogImpact LogImpact => LogImpact.High;
@@ -85,7 +86,7 @@ public sealed partial class AreaReactionEffect : EntityEffect
             smoke.StartSmoke(ent, splitSolution, _duration, spreadAmount);
 
             var audio = reagentArgs.EntityManager.System<SharedAudioSystem>();
-            audio.PlayPvs(_sound, reagentArgs.TargetEntity, AudioHelpers.WithVariation(0.125f));
+            audio.PlayPvs(_sound, reagentArgs.TargetEntity, AudioParams.Default.WithVariation(0.25f));
             return;
         }
 

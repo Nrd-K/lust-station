@@ -171,7 +171,6 @@
   flavor: sour
   color: "#48b3b8"
   physicalDesc: reagent-physical-desc-ferrous
-  slippery: false
   metabolisms:
     Drink:
       effects:
@@ -654,6 +653,10 @@
       effects:
       - !type:Electrocute
         probability: 0.8
+        # Sunrise-Edit
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
 
 - type: reagent
   id: Lipolicide

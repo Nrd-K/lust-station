@@ -9,18 +9,7 @@
     unequipDelay: 4
 
 - type: entity
-  abstract: true
-  id: BaseERPDildo
-  components:
-  - type: EmbeddableProjectile
-    minimumSpeed: 4
-    sound: /Audio/Weapons/pop.ogg
-  - type: ThrowingAngle
-    angle: 0
-  - type: LandAtCursor
-
-- type: entity
-  parent: [BaseItem, BaseERPPlug, BaseERPDildo]
+  parent: [BaseItem, BaseERPPlug]
   id: ERPNormalDildo
   name: normal dildo
   description: Just a based dildo, nothing else. Should I tell you where you can put it?
@@ -35,7 +24,7 @@
 - type: entity
   parent: [BaseItem, BaseERPPlug]
   id: ERPNormalFleshlight
-  name: normal fleshlight
+  name: human fleshlight
   description: Just a based fleshlight, nothing else. Should I tell you what you can put inside?
   components:
   - type: Sprite
@@ -46,7 +35,7 @@
     sprite: _Lust/ERP/Toys/fleshlight.rsi
 
 - type: entity
-  parent: [BaseItem, BaseERPPlug, BaseERPDildo]
+  parent: [BaseItem, BaseERPPlug]
   id: ERPDildoAvian
   name: avian dildo
   description: This dildo is modeled after avian anatomy. Ready to soar to new heights of pleasure?
@@ -59,7 +48,7 @@
     sprite: _Lust/ERP/Toys/d_avian.rsi
 
 - type: entity
-  parent: [BaseItem, BaseERPPlug, BaseERPDildo]
+  parent: [BaseItem, BaseERPPlug]
   id: ERPDildoDragon
   name: dragon dildo
   description: This dildo has a dragon-inspired design. Are you ready to feel hot adventure?
@@ -72,7 +61,7 @@
     sprite: _Lust/ERP/Toys/d_dragon.rsi
 
 - type: entity
-  parent: [BaseItem, BaseERPPlug, BaseERPDildo]
+  parent: [BaseItem, BaseERPPlug]
   id: ERPDildoEquine
   name: equine dildo
   description: Designed to resemble equine anatomy, this dildo offers a wild ride!
@@ -85,7 +74,7 @@
     sprite: _Lust/ERP/Toys/d_equine.rsi
 
 - type: entity
-  parent: [BaseItem, BaseERPPlug, BaseERPDildo]
+  parent: [BaseItem, BaseERPPlug]
   id: ERPDildoKnot
   name: knot dildo
   description: This knot dildo is perfect for those looking for a snug fit. Get ready for a tight experience!
@@ -98,7 +87,7 @@
     sprite: _Lust/ERP/Toys/d_knot.rsi
 
 - type: entity
-  parent: [BaseItem, BaseERPPlug, BaseERPDildo]
+  parent: [BaseItem, BaseERPPlug]
   id: ERPDildoTentacle
   name: tentacle dildo
   description: With a tentacle design, this dildo is for those adventurous enough to embrace the unknown!
@@ -113,7 +102,7 @@
 - type: entity
   parent: [BaseItem, BaseERPPlug]
   id: ERPGreenFleshlight
-  name: green fleshlight
+  name: green slime fleshlight
   description: Just a green fleshlight, nothing else. Ready to explore the green zone?
   components:
   - type: Sprite
@@ -126,7 +115,7 @@
 - type: entity
   parent: [BaseItem, BaseERPPlug]
   id: ERPRedFleshlight
-  name: red fleshlight
+  name: red demon fleshlight
   description: Just a red fleshlight, nothing else. Are you ready for a hot experience?
   components:
   - type: Sprite
@@ -139,7 +128,7 @@
 - type: entity
   parent: [BaseItem, BaseERPPlug]
   id: ERPTealFleshlight
-  name: teal fleshlight
+  name: teal vulpkanin fleshlight
   description: Just a teal fleshlight, nothing else. Dive into the depths of pleasure.
   components:
   - type: Sprite
@@ -152,7 +141,7 @@
 - type: entity
   parent: [BaseItem, BaseERPPlug]
   id: ERPYellowFleshlight
-  name: yellow fleshlight
+  name: yellow felinid fleshlight
   description: Just a yellow fleshlight, nothing else. Brighten up your intimate moments.
   components:
   - type: Sprite
@@ -348,6 +337,46 @@
   - type: Item
     size: Tiny
     sprite: _Lust/ERP/Toys/plug.rsi
+
+- type: entity
+  parent: [BaseItem]
+  id: ERPFoxTailPlug
+  name: fox tail plug
+  description: Time to some roleplaying.
+  components:
+  - type: Sprite
+    sprite: _Lust/ERP/Toys/fox_tail.rsi
+    state: icon
+    scale: 0.9,0.9
+  - type: Item
+    size: Normal
+  - type: Clothing
+    sprite: _Lust/ERP/Toys/fox_tail.rsi
+    slots:
+    - PLUG
+    quickEquip: true
+    equipDelay: 4
+    unequipDelay: 4
+
+- type: entity
+  parent: [BaseItem]
+  id: ERPCatTailPlug
+  name: cat tail plug
+  description: Murr!
+  components:
+  - type: Sprite
+    sprite: _Lust/ERP/Toys/cat_tail.rsi
+    state: icon
+    scale: 0.9,0.9
+  - type: Item
+    size: Normal
+  - type: Clothing
+    sprite: _Lust/ERP/Toys/cat_tail.rsi
+    slots:
+    - PLUG
+    quickEquip: true
+    equipDelay: 4
+    unequipDelay: 4
 
 
 - type: soundCollection

@@ -4,13 +4,13 @@ using Content.Shared.Eui;
 using JetBrains.Annotations;
 using Content.Shared._Sunrise.ERP;
 using Content.Shared.Humanoid;
-using Content.Shared._Sunrise.ERP.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Prototypes;
 using System.Linq;
+
 namespace Content.Server._Sunrise.ERP.Systems
 {
     [UsedImplicitly]
@@ -56,7 +56,6 @@ namespace Content.Server._Sunrise.ERP.Systems
         public override void HandleMessage(EuiMessageBase msg)
         {
             base.HandleMessage(msg);
-            Logger.Info($"HandleMessage: {msg}. {_timing.CurTime}");
             switch (msg)
             {
                 case AddLoveMessage req:

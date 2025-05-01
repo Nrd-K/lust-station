@@ -17,7 +17,7 @@ namespace Content.Server.Roles.Jobs;
 public sealed class JobSystem : SharedJobSystem
 {
     [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly RoleSystem _roles = default!;
     [Dependency] private readonly SharedPlayerSystem _playerSystem = default!;
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
@@ -25,15 +25,30 @@ public sealed class JobSystem : SharedJobSystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<MindComponent, MindRoleAddedEvent>(MindOnDoGreeting);
+        SubscribeLocalEvent<RoleAddedEvent>(OnRoleAddedEvent);
+        SubscribeLocalEvent<RoleRemovedEvent>(OnRoleRemovedEvent);
     }
 
-    private void MindOnDoGreeting(EntityUid mindId, MindComponent component, ref MindRoleAddedEvent args)
+    private void OnRoleAddedEvent(RoleAddedEvent args)
+    {
+        MindOnDoGreeting(args.MindId, args.Mind, args);
+
+        if (args.RoleTypeUpdate)
+            _roles.RoleUpdateMessage(args.Mind);
+    }
+
+    private void OnRoleRemovedEvent(RoleRemovedEvent args)
+    {
+        if (args.RoleTypeUpdate)
+            _roles.RoleUpdateMessage(args.Mind);
+    }
+
+    private void MindOnDoGreeting(EntityUid mindId, MindComponent component, RoleAddedEvent args)
     {
         if (args.Silent)
             return;
 
-        if (!_mind.TryGetSession(mindId, out var session))
+        if (!_player.TryGetSessionById(component.UserId, out var session))
             return;
 
         if (!MindTryGetJob(mindId, out var prototype))

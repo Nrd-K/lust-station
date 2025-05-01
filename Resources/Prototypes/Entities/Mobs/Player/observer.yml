@@ -63,6 +63,11 @@
   - type: Tag
     tags:
     - BypassInteractionRangeChecks
+  - type: PointLight
+    radius: 6
+    castShadows: false
+    enabled: false
+  # Sunrise-Start
   - type: InteractionPopup
     successChance: 1.0
     interactSuccessString: petting-success-cat
@@ -71,7 +76,6 @@
     interactSuccessSound:
       path: /Audio/Animals/cat_meow.ogg
   - type: Pullable
-  # Sunrise-Start
   - type: UserInterface
     interfaces:
       enum.GhostThemeUiKey.Key:
@@ -85,6 +89,9 @@
   id: MobObserver
   components:
   - type: Spectral
+  - type: Tag
+    tags:
+    - AllowGhostShownByEvent
 
 - type: entity
   id: ActionGhostBoo
@@ -100,8 +107,8 @@
 
 - type: entity
   id: ActionToggleLighting
-  name: Toggle All Lighting
-  description: Toggle all light rendering to better observe dark areas.
+  name: Toggle Lighting
+  description: Toggle light rendering to better observe dark areas.
   components:
   - type: InstantAction
     icon: Interface/VerbIcons/light.svg.192dpi.png

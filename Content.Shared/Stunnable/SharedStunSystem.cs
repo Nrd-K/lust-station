@@ -116,7 +116,7 @@ public abstract class SharedStunSystem : EntitySystem
     private void OnStunOnContactStartup(Entity<StunOnContactComponent> ent, ref ComponentStartup args)
     {
         if (TryComp<PhysicsComponent>(ent, out var body))
-            _broadphase.RegenerateContacts(ent, body);
+            _broadphase.RegenerateContacts((ent, body));
     }
 
     private void OnStunOnContactCollide(Entity<StunOnContactComponent> ent, ref StartCollideEvent args)
@@ -308,6 +308,13 @@ public abstract class SharedStunSystem : EntitySystem
         if (args.Unequipee == uid)
             args.Cancel();
     }
+
+    // Sunrise-Start
+    public bool IsParalyzed(EntityUid uid)
+    {
+        return HasComp<StunnedComponent>(uid) || HasComp<KnockedDownComponent>(uid);
+    }
+    // Sunrise-End
 
     #endregion
 }

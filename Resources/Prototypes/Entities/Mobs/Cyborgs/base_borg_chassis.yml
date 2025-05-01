@@ -16,6 +16,7 @@
     soundHit:
       collection: MetalThud
   - type: CombatMode
+  - type: NoSlip
   - type: StaticPrice
     price: 1250
   - type: Fixtures
@@ -35,7 +36,7 @@
   - type: Sprite
     sprite: Mobs/Silicon/chassis.rsi
   - type: RotationVisuals
-    defaultRotation: 90
+    defaultRotation: 90 # Sunrise-Edit
     horizontalRotation: 90
   - type: MobState
     allowedStates:
@@ -113,6 +114,8 @@
         Blunt: -15
         Slash: -15
         Piercing: -15
+        Caustic: -15
+        Structural: -15
     allowSelfRepair: false
   # Sunrise-End
   - type: BorgChassis
@@ -122,6 +125,7 @@
       - BorgChassis
       - RoboticsConsole
   - type: WiresPanel
+    openingTool: Prying
     openDelay: 3
   - type: ActivatableUIRequiresPanel
   - type: NameIdentifier
@@ -159,6 +163,7 @@
     - Flashed
     - Jump # Sunrise-Edit
     - Flip # Sunrise-Edit
+    - Fall # Sunrise-Edit
   - type: TypingIndicator
     proto: robot
   - type: Speech
@@ -167,6 +172,8 @@
   - type: Vocal
     sounds:
       Unsexed: UnisexSilicon
+    screamAction: null
+  - type: DamagedSiliconAccent
   - type: UnblockableSpeech
   - type: FootstepModifier
     footstepSoundCollection:
@@ -179,7 +186,6 @@
     - cell_slot
   - type: Lock
     locked: true
-    breakOnEmag: false
     unlockOnClick: false
   - type: ActivatableUIRequiresLock
   - type: LockedWiresPanel
@@ -237,7 +243,8 @@
     enabled: false
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
-    radius: 4
+    energy: 2 # Sunrise-edit
+    radius: 12 # Sunrise-edit
     netsync: false
   - type: Pullable
   - type: Puller
@@ -248,6 +255,8 @@
     - DoorBumpOpener
     - FootstepSound
     - CanPilot
+    - SiliconEmotes
+    - Unimplantable
   - type: Emoting
   - type: GuideHelp
     guides:
@@ -267,7 +276,8 @@
     sprintModifier: 0.8
   - type: Strap
     position: Stand
-    buckleOffset: "0,0.15"
+    buckleOffsets: # Sunrise-Edit
+    - "0,0.15"
   - type: Stripping
     useDragDrop: false
   # Sunrise-end
@@ -308,7 +318,7 @@
   components:
   - type: RandomMetadata
     nameSegments:
-      - names_borg
+    - NamesBorg
   - type: NpcFactionMember
     factions:
     - NanoTrasen
@@ -316,6 +326,7 @@
     enabled: false
     # Sunrise-Start
     tags:
+    - Borg
     - EmergencyShuttleRepealAll
     - Command
     - Lawyer
@@ -368,6 +379,7 @@
     access: [["SyndicateAgent"], ["NuclearOperative"]]
   - type: SiliconLawProvider
     laws: SyndicateStatic
+    subverted: true
   - type: IntrinsicRadioTransmitter
     channels:
     - Binary
@@ -379,6 +391,8 @@
   - type: MovementAlwaysTouching
   - type: Speech
     speechSounds: SyndieBorg
+    allowedEmotes:
+    - Laugh
   - type: Vocal
     sounds:
       Unsexed: UnisexSiliconSyndicate
@@ -388,8 +402,6 @@
     radius: 6
     energy: 3
   - type: ShowJobIcons
-  - type: ShowMindShieldIcons
-  - type: ShowCriminalRecordIcons
   - type: FlashImmunity
   - type: TypingIndicator
     proto: syndibot

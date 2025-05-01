@@ -23,13 +23,23 @@
     ClothingShoesSchoolBlack: 2
     ClothingShoesSchoolWhite: 2
     ClothingUniformJumpsuitLoona: 3
+    ClothingUniformJumpsuitEroform: 3
     PlugBox: 3
+    ERPCatTailPlug: 3
+    ERPFoxTailPlug: 3
     ERPVibroStick: 3
     ERPVibroEgg: 3
     ERPStrapOn: 3
     ERPWhip: 3
     ERPBeads: 3
     RemoteSignaller: 5
+    ClothingMaskMuzzle: 3
+    ClothingEyesBlindfold: 3
+    GlowstickBase: 3
+    GlowstickRed: 3
+    GlowstickPurple: 3
+    GlowstickYellow: 3
+    GlowstickBlue: 3
     # Bunny uniform
     BunnyUniform: 2
     BunnyShoes: 2

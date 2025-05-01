@@ -25,6 +25,7 @@
       Male: MaleVulpkanin
       Female: FemaleVulpkanin
       Unsexed: MaleVulpkanin
+      Futanari: FemaleVulpkanin # Lust-edit
   - type: Eye
   - type: CameraRecoil
   - type: Examiner
@@ -35,7 +36,7 @@
   - type: Respirator
     damage:
       types:
-        Asphyxiation: 0.5
+        Asphyxiation: 1.0
     damageRecovery:
       types:
         Asphyxiation: -1.0

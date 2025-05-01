@@ -91,6 +91,8 @@
     name: ghost-role-information-rat-king-name
     description: ghost-role-information-rat-king-description
     rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
     raffle:
       settings: default
   - type: GhostTakeoverAvailable
@@ -113,8 +115,9 @@
     price: 2500 # rat wealth
   - type: RandomMetadata
     nameSegments:
-    - RegalRatNameKingdom
-    - RegalRatNameTitle
+    - NamesRegalratKingdom
+    - NamesRegalratTitle
+    nameFormat: name-format-regal-rat
   - type: GuideHelp
     guides:
     - MinorAntagonists
@@ -126,6 +129,7 @@
   - type: Bloodstream
     bleedReductionAmount: 1
     bloodRefreshAmount: 1.5
+  - type: VentCrawler
   # Sunrise-end
   # Sunrise-Lust start
   - type: TTS
@@ -176,6 +180,7 @@
   description: He's da mini rat. He don't make da roolz.
   categories: [ HideSpawnMenu ] #Must be configured to a King or the AI breaks.
   components:
+  - type: VentCrawler # Sunrise-edit
   - type: CombatMode
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
@@ -192,6 +197,9 @@
         2.0
       FollowRange: !type:Single
         3.0
+  - type: Bloodstream
+    bloodReagent: Blood
+    bloodMaxVolume: 75
   - type: Reactive
     groups:
       Flammable: [Touch]

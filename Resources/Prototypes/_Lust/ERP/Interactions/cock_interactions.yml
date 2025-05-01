@@ -10,8 +10,11 @@
   - возбужденно гладит ножкой член %target
   - слегка наступает ножкой на член %target
   - гладит ножкой член %target
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 3
   lovePercentTarget: 6
@@ -39,8 +42,11 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 3
   lovePercentTarget: 7
@@ -65,8 +71,12 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Female
-  targetSex: Male
+  userSex:
+  - Female
+  - Futanari
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 3
   lovePercentTarget: 7
@@ -95,8 +105,11 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 4
   lovePercentTarget: 7
@@ -105,13 +118,7 @@
   - jumpsuit
   - outerClothing
   userTagWhitelist:
-  - Vulpkanin
-  - Felinid
-  - Demon
-  - CatTailStripes
-  - SlimeCatTail
-  - SlimeCatTailStripes
-  - Reptilian
+  - Tail
   category: член
 
 - type: interaction
@@ -132,8 +139,11 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 4
   lovePercentTarget: 8
@@ -159,8 +169,11 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 4
   lovePercentTarget: 8
@@ -202,8 +215,11 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 4
   lovePercentTarget: 9
@@ -230,8 +246,12 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Female
-  targetSex: Male
+  userSex:
+  - Female
+  - Futanari
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 7
   lovePercentTarget: 7
@@ -260,8 +280,11 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 5
   lovePercentTarget: 10
@@ -290,8 +313,11 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 7
   lovePercentTarget: 10
@@ -301,7 +327,7 @@
   - pants
   - jumpsuit
   - outerClothing
-  category: слаймолюд
+  category: член
 
 - type: interaction
   id: CockCowgirl
@@ -318,8 +344,12 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Female
-  targetSex: Male
+  userSex:
+  - Female
+  - Futanari
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 10
   lovePercentTarget: 10
@@ -348,8 +378,11 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 10
   lovePercentTarget: 10
@@ -381,8 +414,11 @@
   - path: /Audio/_Lust/ERP/hlup2.ogg
   - path: /Audio/_Lust/ERP/hlup3.ogg
   - path: /Audio/_Lust/ERP/hlup4.ogg
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   useSelf: true
   lovePercentTarget: 10
@@ -400,8 +436,11 @@
   - нежно кусает головку члена %target
   - прикусывает ствол члена %target, игриво оттягивая кожицу зубами
   - совершает серию легких укусов, заставляя член %target приятно побаливать
-  userSex: Unsexed
-  targetSex: Male
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
   erp: true
   lovePercentUser: 2
   lovePercentTarget: 5
@@ -413,5 +452,22 @@
   - mask
   category: член
 
-
-#наступить на член
+- type: interaction
+  id: CockFootStep
+  name: Наступить на член
+  icon: _Lust/Interface/ERP/cock_footjob.png
+  emotes:
+  - наступает ногой на член %target
+  - прижимает член %target своей ступней
+  userSex:
+  - Unsexed
+  targetSex:
+  - Male
+  - Futanari
+  erp: true
+  lovePercentTarget: 5
+  targetTagBlacklist:
+  - pants
+  - jumpsuit
+  - outerClothing
+  category: член
